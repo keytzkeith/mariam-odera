@@ -93,8 +93,4 @@ function TimelineItem({ item, index }: { item: any; index: number }) {
       )}
     </motion.div>
   )
-        </div>
-      </div>
-    </motion.section>
-  )
 }
