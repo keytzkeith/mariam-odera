@@ -34,7 +34,6 @@ export function TimelineSection() {
               index={index}
             />
           ))}
-
         </div>
       </div>
     </motion.section>
