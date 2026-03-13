@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { memoriesData } from '@/lib/story-data'
 import { useScrollReveal } from '@/hooks/use-scroll-reveal'
+import { ImagePlaceholder } from '@/components/image-placeholder'
 
 export function MemoriesSection() {
   const [revealed, setRevealed] = useState<number[]>([])
@@ -55,16 +56,15 @@ export function MemoriesSection() {
                   opacity: revealed.includes(index) ? 0 : 1
                 }}
                 transition={{ duration: 0.6 }}
-                className="absolute inset-0 bg-gradient-to-br from-[#2A3545] to-[#1a2233] rounded-lg sketchy-border-gold flex flex-col items-center justify-center text-center p-4 overflow-hidden"
+                className="absolute inset-0 rounded-lg overflow-hidden"
                 style={{ backfaceVisibility: 'hidden' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#4DD4C6]/10 to-[#FF4D6D]/5" />
-                <div className="relative z-10 flex flex-col items-center justify-center h-full">
-                  <div className="text-5xl mb-2">🖼️</div>
-                  <h3 className="text-xl font-bold text-[#F6C177] mb-1">{memory.title}</h3>
-                  <p className="text-xs text-[#4DD4C6] mb-3">Memory photo</p>
-                  <p className="text-xs text-[#8B6DFF] italic">Tap to reveal memory</p>
-                </div>
+                <ImagePlaceholder
+                  label={memory.title}
+                  subtitle="Tap to reveal"
+                  borderStyle="gold"
+                  className="h-64 rounded-lg"
+                />
               </motion.div>
 
               {/* Back side - revealed */}

@@ -22,7 +22,7 @@ export function MusicToggle() {
   return (
     <motion.button
       onClick={toggleMusic}
-      className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-[#FF4D6D] text-[#F3EDE2] flex items-center justify-center sketchy-border shadow-lg hover:shadow-xl transition-all"
+      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#FF4D6D] text-[#0B1020] flex items-center justify-center sketchy-border shadow-lg hover:shadow-xl transition-all"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       initial={{ opacity: 0, y: 20 }}

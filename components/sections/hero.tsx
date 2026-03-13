@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUpVariant, fadeInScaleVariant, pulseVariant } from '@/lib/animations'
+import { ImagePlaceholder } from '@/components/image-placeholder'
 
 export function HeroSection() {
   return (
@@ -64,14 +65,14 @@ export function HeroSection() {
       <motion.div
         variants={fadeInScaleVariant}
         transition={{ delay: 0.6 }}
-        className="w-64 h-80 md:w-80 md:h-96 mb-12 rounded-3xl sketchy-border flex items-center justify-center bg-gradient-to-br from-[#2A3545] to-[#1a2233] relative overflow-visible"
+        className="w-64 md:w-80 mb-12"
       >
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#4DD4C6]/10 to-[#FF4D6D]/5" />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full">
-          <div className="text-7xl mb-3">📷</div>
-          <p className="text-sm text-[#F6C177]">Your Photo Here</p>
-          <p className="text-xs text-[#4DD4C6] mt-2">Add a special photo</p>
-        </div>
+        <ImagePlaceholder
+          label="Your Special Photo"
+          subtitle="Add a beautiful memory"
+          borderStyle="pink"
+          className="h-80 md:h-96 rounded-3xl"
+        />
       </motion.div>
 
       {/* CTA Button */}

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { slideInLeftVariant, slideInRightVariant, staggerContainer } from '@/lib/animations'
 import { timelineData } from '@/lib/story-data'
 import { useScrollReveal } from '@/hooks/use-scroll-reveal'
+import { ImagePlaceholder } from '@/components/image-placeholder'
 
 export function TimelineSection() {
   return (
@@ -69,12 +70,13 @@ function TimelineItem({ item, index }: { item: any; index: number }) {
           className="flex-1"
         >
           {/* Image Placeholder with overflow */}
-          <div className="mb-4 h-40 bg-gradient-to-br from-[#2A3545] to-[#1a2233] rounded-lg sketchy-border flex items-center justify-center overflow-visible">
-            <div className="text-center">
-              <div className="text-5xl mb-2">📸</div>
-              <p className="text-sm text-[#8B6DFF]">Timeline Photo</p>
-              <p className="text-xs text-[#4DD4C6] mt-1">Add your memory here</p>
-            </div>
+          <div className="mb-4">
+            <ImagePlaceholder
+              label={item.title}
+              subtitle="Add a memory photo"
+              borderStyle="pink"
+              className="h-40 rounded-lg"
+            />
           </div>
 
           {/* Text content */}
