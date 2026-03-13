@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 type DoodleType = 'star' | 'heart' | 'moon' | 'sparkle' | 'flower'
 
@@ -9,6 +10,13 @@ interface FloatingDoodlesProps {
   type?: DoodleType
   color?: string
   delay?: number
+}
+
+interface DoodlePosition {
+  x: number
+  y: number
+  opacity: number
+  scale: number
 }
 
 const getDoodleIcon = (type: DoodleType, color: string) => {
@@ -62,6 +70,25 @@ export function FloatingDoodles({
   color = '#FF4D6D',
   delay = 0 
 }: FloatingDoodlesProps) {
+  const [positions, setPositions] = useState<DoodlePosition[]>([])
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+    // Generate random positions only on client side
+    const newPositions = Array.from({ length: count }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      opacity: 0.3,
+      scale: Math.random() * 0.5 + 0.5
+    }))
+    setPositions(newPositions)
+  }, [count])
+
+  if (!isMounted) {
+    return null
+  }
+
   const doodles = Array.from({ length: count }, (_, i) => i)
 
   return (
@@ -70,10 +97,10 @@ export function FloatingDoodles({
         <motion.div
           key={i}
           initial={{ 
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            opacity: 0.3,
-            scale: Math.random() * 0.5 + 0.5
+            x: positions[i]?.x || 0,
+            y: positions[i]?.y || 0,
+            opacity: positions[i]?.opacity || 0.3,
+            scale: positions[i]?.scale || 0.5
           }}
           animate={{
             y: [null, Math.random() * -100 - 50],
