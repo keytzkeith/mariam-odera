@@ -60,20 +60,18 @@ export function HeroSection() {
         A little illustrated world made just for you
       </motion.p>
 
-      {/* Illustration placeholder */}
+      {/* Hero image placeholder */}
       <motion.div
         variants={fadeInScaleVariant}
         transition={{ delay: 0.6 }}
-        className="w-64 h-64 md:w-80 md:h-80 mb-12 rounded-3xl sketchy-border flex items-center justify-center bg-[#151B2E] relative overflow-hidden"
+        className="w-64 h-80 md:w-80 md:h-96 mb-12 rounded-3xl sketchy-border flex items-center justify-center bg-gradient-to-br from-[#2A3545] to-[#1a2233] relative overflow-visible"
       >
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="text-8xl"
-        >
-          💗
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FF4D6D]/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#4DD4C6]/10 to-[#FF4D6D]/5" />
+        <div className="relative z-10 flex flex-col items-center justify-center h-full">
+          <div className="text-7xl mb-3">📷</div>
+          <p className="text-sm text-[#F6C177]">Your Photo Here</p>
+          <p className="text-xs text-[#4DD4C6] mt-2">Add a special photo</p>
+        </div>
       </motion.div>
 
       {/* CTA Button */}

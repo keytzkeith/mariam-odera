@@ -40,13 +40,14 @@ export function QualitiesSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#FF4D6D]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <div className="relative z-10">
-                <motion.div
-                  animate={{ rotate: [0, 10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.2 }}
-                  className="text-6xl mb-4 inline-block"
-                >
-                  {item.emoji}
-                </motion.div>
+                {/* Image Placeholder */}
+                <div className="mb-4 h-32 w-full bg-gradient-to-br from-[#2A3545] to-[#1a2233] rounded-lg sketchy-border flex items-center justify-center overflow-hidden">
+                  <div className="text-center">
+                    <div className="text-4xl mb-2">📷</div>
+                    <p className="text-xs text-[#8B6DFF]">Image Placeholder</p>
+                    <p className="text-xs text-[#4DD4C6] mt-1">Replace with your photo</p>
+                  </div>
+                </div>
 
                 <h3 className="text-3xl font-bold text-[#FF4D6D] mb-3">{item.quality}</h3>
                 <p className="text-[#F3EDE2] text-lg leading-relaxed">{item.caption}</p>
