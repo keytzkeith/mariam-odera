@@ -26,28 +26,33 @@ export function QualitiesSection() {
         </motion.h2>
 
         {/* 3D Carousel Container */}
-        <div className="relative h-[600px] flex items-center justify-center" style={{ perspective: '1200px' }}>
-          {/* Center point indicator (optional, for reference) */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-1 h-1 bg-[#FF4D6D]/20 rounded-full" />
-          </div>
-
+        <div 
+          className="relative h-[700px] flex items-center justify-center mx-auto" 
+          style={{ 
+            perspective: '1200px',
+            width: '100%'
+          }}
+        >
           {/* Cards rotating in 3D space */}
-          {qualitiesData.map((item, index) => (
+          {qualitiesData.map((item, index) => {
+            const transform = transforms[index] || { rotateY: 0, rotateX: 0, z: 0, opacity: 0.6 }
+            return (
             <motion.div
               key={index}
-              className="absolute w-80 h-auto"
+              className="absolute w-80"
               style={{
                 transformStyle: 'preserve-3d',
-                backfaceVisibility: 'hidden'
+                backfaceVisibility: 'hidden',
+                transform: `
+                  rotateY(${transform.rotateY}deg) 
+                  rotateX(${transform.rotateX}deg) 
+                  translateZ(${transform.z}px)
+                `
               }}
               animate={{
-                rotateY: transforms[index]?.rotateY || 0,
-                rotateX: transforms[index]?.rotateX || 0,
-                z: transforms[index]?.z || 0,
-                opacity: transforms[index]?.opacity || 0.6
+                opacity: transform.opacity
               }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              transition={{ type: 'tween', duration: 0.05 }}
             >
               <div
                 className="p-8 bg-[#151B2E] rounded-xl sketchy-border group relative overflow-hidden h-full flex flex-col"
@@ -94,7 +99,8 @@ export function QualitiesSection() {
                 </div>
               </div>
             </motion.div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Scroll hint */}
