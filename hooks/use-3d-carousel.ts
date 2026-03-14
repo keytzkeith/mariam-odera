@@ -69,7 +69,6 @@ export function use3DCarousel(cardCount: number) {
       })
 
       setTransforms(newTransforms)
-      lastScrollRef.current = scrollY
     }
 
     window.addEventListener('scroll', handleScroll)
