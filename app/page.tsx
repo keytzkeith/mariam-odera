@@ -11,10 +11,11 @@ import { FloatingDoodles } from '@/components/floating-doodles'
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
+    <main className="relative overflow-x-hidden bg-[#07111f]">
       <Confetti />
       <FloatingDoodles count={8} type="star" color="#F6C177" delay={0} />
-      
+      <FloatingDoodles count={4} type="sparkle" color="#67D9C7" delay={0.8} />
+
       <HeroSection />
       <TimelineSection />
       <QualitiesSection />

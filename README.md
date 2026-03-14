@@ -1,35 +1,63 @@
-# mariam-odera
+# Mariam Odera
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A handcrafted birthday website built with Next.js, React, Tailwind CSS, and Framer Motion.
 
-## Built with v0
+The site is designed as a dark illustrated storybook with:
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+- a comic-style hero section
+- a timeline of the relationship story
+- reusable quality cards with hover tilt
+- interactive stars and hidden memory notes
+- an animated envelope letter reveal
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_zunpmFJTtwsLMQnA8i2FcSGdpTiq)
+## Stack
 
-## Getting Started
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
 
-First, run the development server:
+## Local Development
+
+Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-## Learn More
+To create a production build:
 
-To learn more, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+To run the production server locally:
 
-<a href="https://v0.app/chat/api/kiro/clone/keytzkeith/mariam-odera" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+```bash
+npm run start
+```
+
+## Project Notes
+
+- Main page entry: `app/page.tsx`
+- Global styling: `app/globals.css`
+- Story content: `lib/story-data.ts`
+- Motion variants: `lib/animations.ts`
+- Reusable story UI: `components/story`
+- Page sections: `components/sections`
+
+## Music
+
+The floating music button expects an audio file at:
+
+```text
+public/birthday-theme.mp3
+```
+
+A soft instrumental, piano, or lo-fi romantic track works best.

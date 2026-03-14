@@ -1,104 +1,142 @@
-// Story data for the romantic birthday website
+export const colors = {
+  background: '#07111f',
+  surface: '#101a2b',
+  surfaceAlt: '#162238',
+  accentPink: '#ff5f87',
+  accentGold: '#f6c177',
+  accentCream: '#f4e7d2',
+  accentTeal: '#67d9c7',
+  accentRed: '#ff866e',
+}
+
+export const heroContent = {
+  eyebrow: 'A sketchbook of our story',
+  titleTop: 'Happy Birthday',
+  titleBottom: 'Mariam',
+  subtitle: 'A little illustrated world made just for you.',
+  description:
+    'Five comic-style scenes, a few hidden notes, and one letter from my heart to yours.',
+  cta: 'Open the story',
+  image: '/hero-couple.png',
+}
 
 export const timelineData = [
   {
-    year: "2019",
-    title: "The Beginning",
-    description: "Where it all started, a moment that changed everything"
+    year: '2019',
+    title: 'The beginning',
+    description: 'Distance never erased what was real.',
+    image: '/the-beggining.png',
+    accent: colors.accentPink,
   },
   {
-    year: "2022",
-    title: "Growing Together",
-    description: "Every day with you became more meaningful"
+    year: 'Long distance',
+    title: 'Love stayed loud',
+    description: 'Even far apart, the feeling kept finding its way back.',
+    image: '/long-distance-talk.png',
+    accent: colors.accentGold,
   },
   {
-    year: "2024",
-    title: "Deeper Love",
-    description: "Our journey blossomed into something extraordinary"
+    year: '2022',
+    title: 'Wrong time, true feelings',
+    description: 'We had to part ways because I was not ready.',
+    image: '/wrong-time-had-to-part-ways.png',
+    accent: colors.accentRed,
   },
   {
-    year: "Now",
-    title: "Forever Yours",
-    description: "Celebrating the amazing person you are today"
-  }
+    year: '2024 / 2025',
+    title: 'You still cared',
+    description: 'You checked up on me with the same genuine heart.',
+    image: '/still-cared-and-checked-up.png',
+    accent: colors.accentTeal,
+  },
+  {
+    year: 'Now',
+    title: 'A better heart, a clearer love',
+    description: 'We found our way back with more honesty, peace, and intention.',
+    image: '/reunion-moment.png',
+    accent: colors.accentPink,
+  },
 ]
 
 export const qualitiesData = [
   {
-    quality: "Kind",
-    caption: "Even when she didn't have to be",
-    emoji: "💝"
+    title: 'Kind heart',
+    caption: "Kind even when she didn't have to be.",
+    image: '/kind-heart.png',
+    accent: colors.accentPink,
+    doodle: 'heart',
   },
   {
-    quality: "True",
-    caption: "From the very start",
-    emoji: "✨"
+    title: 'Truthful',
+    caption: 'True from the start, without pretending.',
+    image: '/respectful.png',
+    accent: colors.accentGold,
+    doodle: 'spark',
   },
   {
-    quality: "Radiant",
-    caption: "Your light brightens everything",
-    emoji: "🌟"
+    title: 'Calm',
+    caption: 'A peaceful presence that steadies the room.',
+    image: '/confident-mariam.png',
+    accent: colors.accentTeal,
+    doodle: 'moon',
   },
   {
-    quality: "Strong",
-    caption: "With a gentle heart",
-    emoji: "💪"
+    title: 'Creative',
+    caption: 'Soft imagination, bright mind, beautiful energy.',
+    image: '/creative.png',
+    accent: colors.accentRed,
+    doodle: 'flower',
   },
   {
-    quality: "Creative",
-    caption: "In everything you do",
-    emoji: "🎨"
+    title: 'Radiant',
+    caption: 'She carries light without asking for attention.',
+    image: '/radiant.png',
+    accent: colors.accentGold,
+    doodle: 'star',
   },
   {
-    quality: "Loving",
-    caption: "With all your soul",
-    emoji: "❤️"
-  }
+    title: 'Strong love',
+    caption: 'Soft heart, strong love, and steady care.',
+    image: '/strong.png',
+    accent: colors.accentPink,
+    doodle: 'spark',
+  },
 ]
 
-export const memoriesData = [
-  {
-    title: "What I Never Forgot",
-    message: "The way you laughed when we first met - it was like the universe was telling me I'd found someone special."
-  },
-  {
-    title: "What Makes You Smile",
-    message: "Your kindness to everyone around you, no matter how hard your own day was."
-  },
-  {
-    title: "What I Admire Most",
-    message: "Your strength to be yourself, unapologetically and beautifully, every single day."
-  },
-  {
-    title: "What I Love",
-    message: "The way you see the world with wonder and hope, and how you share that with me."
-  }
+export const starWishes = [
+  'May this year bring you deep peace.',
+  'May your smile keep meeting good news.',
+  'May love find you in gentle ways.',
+  'May every dream grow roots and bloom.',
 ]
 
-export const letterContent = {
-  greeting: "For Mariam, on your day",
-  message: `To the most incredible person I know,
+export const memoryNotes = [
+  {
+    title: 'What I never forgot',
+    note: 'The way your care stayed sincere, even after time had passed.',
+  },
+  {
+    title: 'What I admire about you',
+    note: 'Your honesty, your calmness, and how naturally respectful you are.',
+  },
+  {
+    title: 'Why this time is different',
+    note: 'I came back with a clearer heart, more maturity, and real intention.',
+  },
+  {
+    title: 'A birthday wish for you',
+    note: 'I pray this new year wraps you in joy, peace, and lasting love.',
+  },
+]
 
-Happy Birthday to you. Today celebrates not just another year, but another year of being lucky enough to know you, to love you, and to grow beside you.
-
-You are kind when the world is harsh, true when things are uncertain, and radiant even on your hardest days. You inspire me to be better, love deeper, and dream bigger.
-
-Every moment with you is a gift I never take for granted. Your laugh, your dreams, your fierce heart—they are everything to me.
-
-On this day, I hope you feel as loved as you deserve to be. I hope you know just how special you are, how much you matter, and how grateful I am for you.
-
-Here's to celebrating you—all of your beauty, strength, kindness, and love.
-
-Happy Birthday, my love. Forever yours.`,
-  signature: "With all my love"
-}
-
-export const colors = {
-  background: "#0B1020",
-  cardBg: "#151B2E",
-  accentPink: "#FF4D6D",
-  accentGold: "#F6C177",
-  textCream: "#F3EDE2",
-  accentPurple: "#8B6DFF",
-  accentTeal: "#4DD4C6"
+export const envelopeLetter = {
+  title: 'For Mariam, on your day',
+  lines: [
+    'You have always held a special place in my heart.',
+    'Time changed many things, but it never erased your truth.',
+    'Thank you for being kind, sincere, and unforgettable.',
+    'I am grateful for you, and I pray this new year brings you joy, peace, and love.',
+    'Happy Birthday, Mariam.',
+  ],
+  signature: 'With love',
 }

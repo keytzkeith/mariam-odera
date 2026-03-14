@@ -1,97 +1,99 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { slideInLeftVariant, slideInRightVariant, staggerContainer } from '@/lib/animations'
+
+import { panelReveal, itemReveal } from '@/lib/animations'
 import { timelineData } from '@/lib/story-data'
-import { useScrollReveal } from '@/hooks/use-scroll-reveal'
-import { ImagePlaceholder } from '@/components/image-placeholder'
+import { SectionShell } from '@/components/story/section-shell'
+import { SectionHeading } from '@/components/story/section-heading'
+import { SketchFrame } from '@/components/story/sketch-frame'
 
 export function TimelineSection() {
   return (
-    <motion.section
+    <SectionShell
       id="timeline-section"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={staggerContainer}
-      className="w-full py-20 px-4 bg-[#0B1020]"
+      className="bg-[#091321]"
+      contentClassName="max-w-6xl"
+      ornament={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,95,135,0.05),transparent_35%,rgba(246,193,119,0.04))]" />}
     >
-      <div className="max-w-4xl mx-auto">
-        <motion.h2
-          className="text-5xl md:text-6xl font-bold text-center mb-16 text-[#F3EDE2]"
-          style={{ fontFamily: 'var(--caveat)' }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Our Story
-        </motion.h2>
+      <SectionHeading
+        eyebrow="How it started"
+        title="Our story, drawn like comic panels"
+        description="Short scenes, a few honest turns, and the road that brought us here again."
+      />
 
-        <div className="space-y-12">
-          {timelineData.map((item, index) => (
-            <TimelineItem
-              key={index}
-              item={item}
-              index={index}
-            />
-          ))}
-        </div>
+      <div className="relative space-y-8 sm:space-y-10">
+        <div className="pointer-events-none absolute left-1/2 top-2 hidden h-[calc(100%-28px)] w-px -translate-x-1/2 bg-[linear-gradient(180deg,#ff5f87,rgba(246,193,119,0.25),transparent)] lg:block" />
+        {timelineData.map((item, index) => {
+          const reverse = index % 2 === 1
+          const doodle = reverse ? '↙' : '↘'
+
+          return (
+            <motion.article
+              key={item.title}
+              variants={panelReveal}
+              className="grid gap-4 lg:grid-cols-[1fr_56px_1fr] lg:items-center lg:gap-8"
+            >
+              <div
+                className={`${
+                  reverse
+                    ? 'lg:col-start-3 lg:flex lg:justify-start'
+                    : 'lg:col-start-1 lg:flex lg:justify-end'
+                }`}
+              >
+                <div className={`w-full lg:max-w-md ${reverse ? 'lg:translate-x-6' : 'lg:-translate-x-6'}`}>
+                  <SketchFrame
+                    src={item.image}
+                    alt={item.title}
+                    accent={item.accent}
+                    className={reverse ? 'rotate-[1.5deg]' : 'rotate-[-1.5deg]'}
+                  />
+                </div>
+              </div>
+
+              <div className="relative hidden items-center justify-center lg:flex">
+                <div
+                  className={`pointer-events-none absolute top-1/2 text-2xl font-bold opacity-80 ${reverse ? 'left-[115%]' : 'right-[115%]'}`}
+                  style={{ color: item.accent, transform: 'translateY(-50%)' }}
+                >
+                  {doodle}
+                </div>
+                <div
+                  className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-dashed bg-[#101a2b] text-xs font-bold uppercase tracking-[0.18em]"
+                  style={{ borderColor: item.accent, color: item.accent }}
+                >
+                  {index + 1}
+                </div>
+              </div>
+
+              <motion.div
+                variants={itemReveal}
+                className={`relative w-full rounded-[28px] border border-dashed bg-[rgba(16,26,43,0.92)] p-6 text-left shadow-[0_18px_50px_rgba(0,0,0,0.28)] sm:p-7 ${
+                  reverse
+                    ? 'lg:col-start-1 lg:mr-auto lg:max-w-md lg:-translate-x-6'
+                    : 'lg:col-start-3 lg:max-w-md lg:translate-x-6'
+                }`}
+                style={{ borderColor: `${item.accent}55` }}
+              >
+                <div
+                  className={`pointer-events-none absolute top-5 hidden h-10 w-10 rounded-full border border-dashed opacity-40 lg:block ${reverse ? '-right-4' : '-left-4'}`}
+                  style={{ borderColor: item.accent }}
+                />
+                <p className="text-xs font-semibold uppercase tracking-[0.32em]" style={{ color: item.accent }}>
+                  {item.year}
+                </p>
+                <h3
+                  className="mt-3 text-3xl font-bold leading-none text-[#f4e7d2]"
+                  style={{ fontFamily: 'var(--caveat)' }}
+                >
+                  {item.title}
+                </h3>
+                <p className="mt-4 max-w-md text-sm leading-7 text-[#d6d8df] sm:text-base">{item.description}</p>
+              </motion.div>
+            </motion.article>
+          )
+        })}
       </div>
-    </motion.section>
-  )
-}
-
-function TimelineItem({ item, index }: { item: any; index: number }) {
-  const { ref, isVisible } = useScrollReveal()
-
-  return (
-    <motion.div
-      ref={ref as any}
-      initial={{ opacity: 0 }}
-      animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.6 }}
-      className="relative"
-    >
-      <div className={`flex items-center gap-8 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}>
-        {/* Timeline dot */}
-        <motion.div
-          whileHover={{ scale: 1.2 }}
-          className="w-12 h-12 rounded-full bg-[#FF4D6D] flex items-center justify-center flex-shrink-0 relative z-10 sketchy-border"
-        >
-          <div className="w-4 h-4 bg-[#0B1020] rounded-full" />
-        </motion.div>
-
-        {/* Content card with image */}
-        <motion.div
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: '0 0 40px rgba(255, 77, 109, 0.4)'
-          }}
-          className="flex-1"
-        >
-          {/* Image Placeholder with overflow */}
-          <div className="mb-4">
-            <ImagePlaceholder
-              label={item.title}
-              subtitle="Add a memory photo"
-              borderStyle="pink"
-              className="h-40 rounded-lg"
-            />
-          </div>
-
-          {/* Text content */}
-          <div className="p-6 md:p-8 bg-[#151B2E] rounded-lg sketchy-border-pink border-2 border-[#FF4D6D] border-opacity-50">
-            <div className="text-3xl font-bold text-[#F6C177] mb-2">{item.year}</div>
-            <h3 className="text-2xl font-bold text-[#FF4D6D] mb-2">{item.title}</h3>
-            <p className="text-[#F3EDE2] text-lg">{item.description}</p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Connecting line */}
-      {index < 4 && (
-        <div className="absolute left-6 top-32 w-0.5 h-20 bg-gradient-to-b from-[#FF4D6D] to-transparent" />
-      )}
-    </motion.div>
+    </SectionShell>
   )
 }
