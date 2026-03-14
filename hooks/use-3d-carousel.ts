@@ -9,15 +9,11 @@ interface Card3DTransform {
 
 export function use3DCarousel(cardCount: number) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [transforms, setTransforms] = useState<Card3DTransform[]>([])
-  const lastScrollRef = useRef(0)
+  const [transforms, setTransforms] = useState<Card3DTransform[]>(() =>
+    Array(cardCount).fill({ rotateY: 0, rotateX: 0, z: 0, opacity: 0.6 })
+  )
 
   useEffect(() => {
-    // Initialize transforms
-    setTransforms(
-      Array(cardCount).fill({ rotateY: 0, rotateX: 0, z: 0, opacity: 0.6 })
-    )
-
     const handleScroll = () => {
       if (!containerRef.current) return
 
@@ -39,8 +35,6 @@ export function use3DCarousel(cardCount: number) {
       // -1 = far above, 0 = centered, 1 = far below
       let progress = distanceFromCenter / window.innerHeight
       progress = Math.max(-1, Math.min(1, progress))
-      
-      console.log("[v0] Carousel scroll - progress:", progress, "distance:", distanceFromCenter, "scrollY:", scrollY)
 
       // Calculate individual card transforms
       const newTransforms = Array.from({ length: cardCount }, (_, index) => {
